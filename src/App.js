@@ -29,11 +29,9 @@ function App() {
 
   useEffect(() => {
     //get todos list from firebase
-    db.collection("todos")
-      .orderBy("timestamp", "des")
-      .onSnapshot((snapshot) => {
-        dispatch(getToDos(snapshot.docs.map((doc) => doc.data().todo)));
-      });
+    db.collection("todos").onSnapshot((snapshot) => {
+      dispatch(getToDos(snapshot.docs.map((doc) => doc.data().todo)));
+    });
   }, []);
 
   return (
